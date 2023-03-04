@@ -1,0 +1,19 @@
+010
+initialize server folder 
+>npm init -y
+express is for build the server 
+mongoose is to intract with the mongodb
+cors :here client and server can communicate with each other,they will run in different origin,cors will avoid any error for communicating with two different origin
+dotenv is for environment variable setup
+nodemon will notice each and every changes in the code and rerun the server with each changes
+esm is for import export syntax
+jsonwebtoken will creating the token and that will be exchanged between our client and server,user for authentication
+bcrypt is used to hash the password
+morgan it will show the endpoints we are getting the request,it will helpfull to debug the application
+create server.js ,it be the entry point to the server
+add script tag in package.json
+"scripts": {
+    "start":"nodemon -r esm server.js"
+  },
+>npm start
+
