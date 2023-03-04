@@ -52,7 +52,7 @@ export default MyApp;
 const Index = ()=>{
     return (
         <>
-        <h1 className='text-center bg-primary jumbotron'> Hello world</h1>
+        <h1 className='text-center bg-primary jumbotron'> Online Education Market Place</h1>
         <p>From next.js...</p>
         </>
     )
@@ -120,4 +120,44 @@ function MyApp({ Component, pageProps }) {
 }
 export default MyApp;
 
+008
+Next.js: Error: React.Children.only expected to receive a single React element child
+add attribute legacybehaviour in link component
+install @ant-design/icons for importing icons
+>npm install @and-design/icon
 
+import {Menu} from 'antd';
+// in react we use  import {Link} from 'next/link';
+import Link from 'next/link';
+//from https://ant.design/components/icon component v
+import {AppstoreAddOutlined,LoginOutlined,UserAddOutlined} from '@ant-design/icons';
+
+
+// destructure item from menu    Item.Menu
+const {Item } = Menu;
+const TopNav = ()=>{
+    return (
+        // mode horizontal will allow the item horizontal in navbar
+        <Menu mode='horizontal'>
+            <Item icon={<AppstoreAddOutlined/>}>
+                {/* in react <Link to="/"></Link> */}
+                <Link href="/" legacyBehavior>
+                    <a>App</a>
+                </Link>
+            </Item>
+            <Item icon={<LoginOutlined/>}>
+                <Link href="/login" legacyBehavior>
+                    <a>Login</a>
+                </Link>
+            </Item>
+            <Item icon={<UserAddOutlined/>}>
+                <Link href="/register" legacyBehavior>
+                    <a>Register</a>
+                </Link>
+            </Item>
+        </Menu>
+    );
+}
+export default TopNav;
+
+009

@@ -1,12 +1,9 @@
-const Index = ()=>{
+const Index = () => {
     return (
         <>
-            <h1 className="text-center jumbotron">
-                {' '}
-                Hello world
-            </h1>
+            <h1 className="text-center jumbotron">Online Education Market Place</h1>
             <p>From next.js...</p>
         </>
     );
-}
-export default Index
+};
+export default Index;
