@@ -9,7 +9,7 @@ nodemon will notice each and every changes in the code and rerun the server with
 esm is for import export syntax
 jsonwebtoken will creating the token and that will be exchanged between our client and server,user for authentication
 bcrypt is used to hash the password
-morgan it will show the endpoints we are getting the request,it will helpfull to debug the application
+morgan it will show the endpoints we are getting the request,it will helpfull to debug the application.it will console.endpoint , the method used for that endpoint and its status code so that the debugging process will be eahy
 create server.js ,it be the entry point to the server
 add script tag in package.json
 "scripts": {
@@ -17,3 +17,16 @@ add script tag in package.json
   },
 >npm start
 
+011
+const app = express();
+create an express and let put it in a variable,if we execute the express function ,then that will availabel in the app variable
+middleware ,some code which will run before any response is sent back to our client.before the response is sent in between ,as soon as we get the request we might need to do some work so that time we can execute the middleware function
+anytime we want to apply middleware ,we will use the 'use' funtion that is availabel with express
+app.use(cors());
+this will allow to pass json data
+app.use(express.json());
+app.get('/,()=>{})
+when we get request to the endpoint '/' we want to sent some response,the get method have two parameter 
+express is a request response handler
+app.use() requires a middleware function
+app.use(console.log('this is my own middleware'));
