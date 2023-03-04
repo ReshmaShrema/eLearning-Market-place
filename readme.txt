@@ -60,4 +60,11 @@ const Index = ()=>{
 export default Index
 
 006
-
+create public/css folder and style.css file
+.jumbotron{
+    padding:50px;
+    background: linear-gradient(117.41deg, #070557 1.65%, #036C7A 47.35%);
+    color:white;
+}
+import in app.js
+import '../public/css/style.css'
