@@ -66,5 +66,58 @@ create public/css folder and style.css file
     background: linear-gradient(117.41deg, #070557 1.65%, #036C7A 47.35%);
     color:white;
 }
-import in app.js
+import this page  in app.js
 import '../public/css/style.css'
+
+007
+create login.js and register,js in pages folder.the file name be the router (part of url /login)
+
+const Login = () => {
+    return (
+        <>
+            <h1 className="jumbotron">Login</h1>
+            <p>login page</p>
+        </>
+    );
+};
+export default Login;
+
+const Register = () => {
+    return (
+        <>
+            <h1 className="jumbotron">
+                Register
+            </h1>
+            <p>Register page</p>
+        </>
+    );
+};
+export default Register;
+
+create component/TopNav.js, a navigation component that is available to all pages
+const TopNav = ()=>{
+    return ( 
+        <>
+        <p>Top Nav</p>
+        </>
+    )
+}
+export default TopNav;
+
+import TopNav in _app.js
+import TopNav from '../components/TopNav';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'antd/dist/reset.css';
+import '../public/css/style.css';
+
+function MyApp({ Component, pageProps }) {
+    return (
+        <>
+            <TopNav />
+            <Component {...pageProps} />;
+        </>
+    );
+}
+export default MyApp;
+
+
