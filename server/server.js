@@ -3,7 +3,8 @@ import cors from 'cors'
 // const morgan =require('morgan');
 import morgan from 'morgan';
 require('dotenv').config();
-
+// for auto load routes,const {readdirSync} = require('fs);//destructuring
+const fs = require('fs');
 // create express app
 const app = express();
 
@@ -20,6 +21,10 @@ app.use((req,res,next) => {
 });
 
 // route
+// after destructe readdirSync('./routes')
+fs.readdirSync('./routes').map((r)=>{
+   app.use('/api',require(`./routes/${r}`))
+})
 app.get('/',(req,res)=>{
     res.send('you hit server endpoint');
 });
