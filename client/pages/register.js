@@ -1,16 +1,19 @@
 import { useState } from 'react';
 
+
 const Register = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit =async (e) => {
         // call when submit the event
         // prevent the page reloading when the page is submitted
         e.preventDefault();
         console.table({name,email,password})
+       
     };
+    console.log('register response',data)
     return (
         <>
             <h1 className="jumbotron">Register</h1>
