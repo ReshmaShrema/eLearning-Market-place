@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import axios from 'axios';
 
 
 const Register = () => {
@@ -10,10 +11,13 @@ const Register = () => {
         // call when submit the event
         // prevent the page reloading when the page is submitted
         e.preventDefault();
-        console.table({name,email,password})
-       
+        console.table({name,email,password});
+        const {data} = await axios.post(`http://localhost:5000/api/register`,{
+            name,email,password
+        });
+        console.log('Register response',data);
     };
-    console.log('register response',data)
+    
     return (
         <>
             <h1 className="jumbotron">Register</h1>

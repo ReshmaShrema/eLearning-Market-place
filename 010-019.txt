@@ -150,3 +150,27 @@ mongoose
   .catch((err) => console.log("DB Error => ", err));
 
 
+017
+axios is a http library,so that we can make a post request and send this information to the backend so that we can save in the database 
+install axios in client
+>npm i axios
+import axios in client/pages/register.js
+const handleSubmit =async (e) => {
+        // call when submit the event
+        // prevent the page reloading when the page is submitted
+        e.preventDefault();
+        console.table({name,email,password})
+        // send the data to backend
+        const {data} =await axios.post(`http://localhost:8000/api/register`{name,email,password});
+    };
+note that the /api/register must be a post request in backend
+app.use(express.json()) middleware is must for getting json data in backend,otherwise we cannot access to req.body
+check network ,payload for verify send it or not
+
+export const register=(req, res) => {
+    console.log(req.body);
+    res.json('Register User ffff');
+    //res.send('Register User ffff');
+};
+
+018
