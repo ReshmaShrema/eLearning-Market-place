@@ -1,5 +1,5 @@
-import { string } from "prop-types";
-import mongoose form 'mongoose';
+
+const mongoose = require('mongoose')
 const {Schema} =mongoose;
 const userSchema = new Schema({
     name:{
@@ -34,3 +34,4 @@ const userSchema = new Schema({
 },{timestamps:true});
 
 export default mongoose.model("User",userSchema);
+

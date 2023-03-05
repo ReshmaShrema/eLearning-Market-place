@@ -1,28 +1,27 @@
-import express from 'express'
-import cors from 'cors'
+const express =require('express')
+const cors = require('cors');
+
 // for auto load routes,const {readdirSync} = require('fs);//destructuring
 const fs = require('fs');
-// import mongoose from 'mongoose';
-// import mongoose from 'mongoose';
-//const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 const morgan =require('morgan');
 //import morgan from 'morgan';
 require('dotenv').config();
 
 // create express app
 const app = express();
+// mongoose.connect('mongodb://127.0.0.1:27017/myOwnDesign').then(() => {
+//     console.log('Database Connected');
+// });
 
 
 // mongoose.connect('mongodb://127.0.0.1:27017/wings');
 // db
-// mongoose
-//     .connect(process.env.DATABASE, {})
-//     .then(() => console.log('***DB connected***'))
-//     .catch((err) => console.log('DB Connection Error => ', err));
-// mongoose
-//     .connect('mongodb://localhost:27017/wings')
-//     .then(() => console.log('DB connected'))
-//     .catch((err) => console.log('DB CONNECTION ERROR: ', err));
+mongoose
+    .connect(process.env.DATABASE, {})
+    .then(() => console.log('***DB connected***'))
+    .catch((err) => console.log('DB Connection Error => ', err));
+
 // apply middleware
 app.use(cors());
 app.use(express.json());
