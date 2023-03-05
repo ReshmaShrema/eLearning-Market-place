@@ -1,12 +1,20 @@
 import express from 'express'
 import cors from 'cors'
+// for auto load routes,const {readdirSync} = require('fs);//destructuring
+const fs = require('fs');
+import mongoose from 'mongoose';
 // const morgan =require('morgan');
 import morgan from 'morgan';
 require('dotenv').config();
-// for auto load routes,const {readdirSync} = require('fs);//destructuring
-const fs = require('fs');
+
 // create express app
 const app = express();
+
+// db
+mongoose
+    .connect(process.env.DATABASE, {})
+    .then(() => console.log('***DB connected***'))
+    .catch((err) => console.log('DB Connection Error => ', err));
 
 // apply middleware
 app.use(cors());
