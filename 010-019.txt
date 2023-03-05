@@ -174,6 +174,68 @@ export const register=(req, res) => {
 };
 
 018
-by using scema we can decide which field is saved to the database.with scemas we can create database models,that will interact with the database 
+by using schema we can decide which field is saved to the database.with scemas we can create database models,that will interact with the database 
 create server/models/user.js
 
+const mongoose = require('mongoose')
+const {Schema} =mongoose;
+const userSchema = new Schema({
+    name:{
+        type:String,
+        trim:true,
+        required:true,
+    },
+    email:{
+        type:String,
+        trim:true,
+        required:true,
+        unique:true,
+    },
+    password:{
+        type:String,
+        required:true,
+        min:6,
+        max:64,
+    },
+    picture:{
+        type:String,
+        default:'/avatar.png'
+    },
+    role:{
+    type:[String],
+    default:["Subscriber"],
+    enum:["Subscriber","Instructor","Admin"]
+    },
+    stripe_account_id:'',
+    stripe_seller:{},
+    stripeSession:{},
+},{timestamps:true});
+
+export default mongoose.model("User",userSchema);
+
+removed ems package and recode everything 
+error due to ems 
+pkFactory: db.options?.pkFactory ?? utils_1.DEFAULT_PK_FACTORY,SyntaxError: Invalid or unexpected token
+
+019
+create server/utils/auth.js
+import bcrypt from 'bcrypt';
+export const hashPassword =(password)=>{
+    return new Promise((resolve,reject)=>{
+        bcrypt.genSalt(12,(err,salt)=>{
+            if(err){
+                reject(err);
+            }
+            bcrypt.hash(password,salt,(err,hash)=>{
+                if(err){
+                    reject(err);
+                }
+                resolve(hash);
+            });
+        });
+    });
+    
+}
+export const comparePassword = (password, hashed) => {
+    return bcrypt.compare(password, hashed);
+};
