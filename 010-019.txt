@@ -127,3 +127,8 @@ router.get('/register',register);
 module.exports=router;
 
 014
+use mongo atlas or install mongodb
+any time we make any change in env file,we must restart the server
+add mongodb connection string in .env file
+PORT=5000
+DATABASE=mongodb://localhost:27017/wings
