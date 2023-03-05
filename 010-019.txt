@@ -174,3 +174,6 @@ export const register=(req, res) => {
 };
 
 018
+by using scema we can decide which field is saved to the database.with scemas we can create database models,that will interact with the database 
+create server/models/user.js
+
