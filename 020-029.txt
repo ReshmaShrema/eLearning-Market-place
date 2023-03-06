@@ -79,3 +79,57 @@ set it to true when we submit the form and set to false when the toggle popup,an
 create .env.local in client,for avoiding clash
 no need to seperate install the package dotenv,if it in server that will access with client
 
+024
+setup custom next js server
+this is required in the development mode because we want to use cookie based authentication system.so we will still be communication with our backend and frondend using the json web token.here in this project we are not going to save the token in local storage.which is not a perfect solution.because it can be accessed in the client side using js.so for that reson to implement secure login system we are going to use cookie based authentication system.so we need to have client and server running in the same domain,so that the cookies work.cookies are something that browser will send automatically to the issuing server.
+The cookies are send in the headers by default,that why it is work with same domain/origin
+server when it issued the token ,it will issue as http only cookies and with that our server has full control over the cookies.so server will send to the cliend and this cliend will send that cookies every time any request is made back to the server,in that way it will fully seccure
+we need to use proxy for setting cookies.it is only for development mode
+
+to use cookies based auth system we need have both client and server running on same origin/domain
+we need to use proxy for that because our client/nextjs is running on 3000
+
+
+use proxy in next  js 
+to use poxy we need to create custom server
+this is only for development mode
+in production,we will use same origin/domain so we don't have to worry about it 
+we can simply run build then start next app
+
+
+install http-proxy-middleware,express in client folder
+create custom express server
+client/server.js
+
+const express=require('express');
+const next = require('next');
+const {createProxyMiddleware} = require('http-proxy-middleware')
+// check production  or development envireonment
+const dev = process.env.NODE_ENV!=='production';
+//create next application
+const app = next({dev});
+const handle = app.getRequestHandler();
+app.prepare().then(()=>{
+    const server =express();
+    //apply proxy in dev mode,use express
+    if(dev){
+        //prefix the backend routeh  with /api and  that will send reuqest to our backend
+server.use('/api',createProxyMiddleware({target:'http://localhost:8000',changeOrigin:true,})
+        )
+    }
+    server.all("*",(req,res)=>{
+        return handle(req,res);
+    });
+    server.listen(3000,(err)=>{
+        if(err) throw err;
+        console.log('>Ready on http://localhost:5000');
+    })
+}).catch((err)=>{
+    console.log('Error',err);
+});
+
+change register.js 
+/api
+
+change it in package.json
+"dev": "node server.js",
