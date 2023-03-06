@@ -28,10 +28,10 @@ const userSchema = new Schema({
     default:["Subscriber"],
     enum:["Subscriber","Instructor","Admin"]
     },
-    stripe_account_id:'',
+    stripe_account_id:{},
     stripe_seller:{},
     stripeSession:{},
 },{timestamps:true});
 
-export default mongoose.model("User",userSchema);
+module.exports = mongoose.model("User",userSchema);
 
