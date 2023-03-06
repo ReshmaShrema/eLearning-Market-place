@@ -161,4 +161,6 @@ useEffect(() => {
         typeof window !== 'undefined' && setCurrent(window.location.pathname);
     }, [typeof window !== 'undefined' && window.location.pathname]);
 
-    
+026
+use context insted of redux because ,in nextjs contex is easy
+sent cookies from backend to frondend we use the property called httpOnly=true so that it can be inaccesible
