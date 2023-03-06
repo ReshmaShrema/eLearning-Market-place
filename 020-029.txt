@@ -56,3 +56,16 @@ exports.register = async (req, res) => {
     // res.json('Register User ffff');
     //res.send('Register User ffff');
 };
+
+021
+install toastify package in client side
+npm i react-toastify
+import {ToastContainer} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+<ToastContainer position='top-center'/>
+
+toast.success('message');
+toast.error(err.response.data);
+toast('plain message');
+
+
