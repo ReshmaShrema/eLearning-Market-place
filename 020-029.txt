@@ -128,8 +128,37 @@ server.use('/api',createProxyMiddleware({target:'http://localhost:8000',changeOr
     console.log('Error',err);
 });
 
-change register.js 
+change  in register.js 
 /api
 
 change it in package.json
 "dev": "node server.js",
+
+025
+register.js
+import Link from 'next/link';
+<p className="text-center p-3">
+                    Already Registered{' '}
+                    <Link href="/login" legacyBehavior>
+                        <a>Login</a>
+                    </Link>
+                </p>
+
+
+active link when we on a page.we on login page ,login icon is in different color 
+TopNav.js
+import usestate and useEffect
+const [current,setCurrent]=useState('');
+
+set key and onclick on each item
+<Menu mode="horizontal" selectedKeys={[current]}>
+<Item key="/" onClick={(e) => setCurrent(e.key)}  icon={<AppstoreAddOutlined />}>{/* in react <Link to="/"></Link> */} <Link href="/" legacyBehavior><a>App</a></Link>
+
+use useEffect 
+useEffect(() => {
+        //window.location.pathname give the url
+        //ensure it is in browser
+        typeof window !== 'undefined' && setCurrent(window.location.pathname);
+    }, [typeof window !== 'undefined' && window.location.pathname]);
+
+    
