@@ -17,6 +17,7 @@ const Register = () => {
         try {
             setLoading(true);
             // /api setuup in client/server.js,proxy will target to backend 8000 port that setup in server.js file
+            
             const { data } = await axios.post(
                 `/api/register`,
                 {
