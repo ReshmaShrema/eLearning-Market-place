@@ -1,0 +1,9 @@
+030
+
+wrapping contect in appjs
+ <Provider>
+        <ToastContainer position='top-center'/>
+            <TopNav />
+            <Component {...pageProps} />;
+        </Provider>
+

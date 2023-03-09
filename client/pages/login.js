@@ -1,13 +1,19 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { SyncOutlined } from '@ant-design/icons';
 import Link from 'next/link';
+import { Context } from '../context';
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
+
+    //state context
+    const { state, despatch } = useContext(Context);
+    console.log(state);
+
     const handleSubmit = async (e) => {
         // call when submit the event
         // prevent the page reloading when the page is submitted
@@ -16,19 +22,22 @@ const Login = () => {
         try {
             setLoading(true);
             // /api setuup in client/server.js,proxy will target to backend 8000 port that setup in server.js file,send data to /login
-            const { data } = await axios.post(
-                `/api/login`,
-                {
-                    email,
-                    password,
-                }
-            );
+            const { data } = await axios.post(`/api/login`, {
+                email,
+                password,
+            });
             // console.log('Login response',data);
             // toast.success('Login Successful');
             // setLoading(false);
+
+dispatchEvent({
+    type:"LOGIN",
+    payload:data,
+});
+
         } catch (err) {
-            // toast.error(err.response.data);
-            // setLoading(false);
+            toast.error(err.response.data);
+            setLoading(false);
         }
     };
 
