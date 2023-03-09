@@ -213,3 +213,8 @@ exports.login = async (req, res) => {
         return res.status(400).send('Error.Try again');
     }
 };
+
+027
+appliction=>storage=>clear site data
+cookies is set is header, everytime we communicate it will send with the header(must be in same origin)
+we want to save user details somewhere then only we can use it in any page ,in that we use redux 

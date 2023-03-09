@@ -1,3 +1,5 @@
+client  =>npm run dev
+server =>npm start
 000
 initialize a git repositore by 'git init' command
 create client and server folder
